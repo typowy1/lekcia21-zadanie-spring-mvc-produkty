@@ -7,3 +7,13 @@
     width: 500px;
     margin: 50px auto;
 }
+
+.homePageLink{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.addForm{
+    width: 1000px;
+    margin: 50px auto 0 auto;
+}

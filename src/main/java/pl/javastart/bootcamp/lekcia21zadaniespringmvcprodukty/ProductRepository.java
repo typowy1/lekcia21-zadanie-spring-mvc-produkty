@@ -19,7 +19,7 @@ public class ProductRepository {
         products.add(new Product("Garnek 1L", 40.99, Category.HOUSEHOLD_ITEMS));
         products.add(new Product("Widelec", 1.50, Category.HOUSEHOLD_ITEMS));
         products.add(new Product("Rower", 1000, Category.OTHER));
-        products.add(new Product("Wiadro", 50, Category.OTHER));
+        products.add(new Product("Komin", 500, Category.OTHER));
     }
 
     public List<Product> findAll() {
@@ -34,5 +34,9 @@ public class ProductRepository {
             }
         }
         return filtered;
+    }
+
+    public void add(Product product) {
+        products.add(product);
     }
 }
