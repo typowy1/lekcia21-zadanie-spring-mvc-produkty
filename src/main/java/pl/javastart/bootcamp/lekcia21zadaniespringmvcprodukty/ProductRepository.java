@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class ProductRepository {
@@ -27,11 +28,9 @@ public class ProductRepository {
     }
 
     public List<Product> findByCategory(Category category) {
-        List<Product> filtered = new ArrayList<>();
-        products.stream()
-                .filter(product -> product.getCategory() == category)
-                .forEachOrdered(filtered::add);
-        return filtered;
+        return products.stream()
+                .filter(product -> product.getCategory() == (category))
+                .collect(Collectors.toList());
     }
 
     public void add(Product product) {

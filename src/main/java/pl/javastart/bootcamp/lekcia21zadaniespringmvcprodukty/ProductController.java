@@ -24,11 +24,6 @@ public class ProductController {
 
     @GetMapping("/lista")
     public String list(Model model, @RequestParam(required = false, name = "kategoria") Category category) {
-        prepareDataForList(model, category);
-        return "list";
-    }
-
-    private void prepareDataForList(Model model, Category category) {
         List<Product> products;
 
         if (category != null) {
@@ -37,12 +32,13 @@ public class ProductController {
             products = productRepository.findAll();
         }
 
-        double sum = products.stream()
-                .mapToDouble(Product::getPrice).sum();
+        double sum = sumPrices(products);
 
         model.addAttribute("products", products);
         model.addAttribute("category", category);
         model.addAttribute("priceSum", sum);
+
+        return "list";
     }
 
     @GetMapping("/dodaj")
@@ -55,5 +51,11 @@ public class ProductController {
     public String addProduct(Product product) {
         productRepository.add(product);
         return "redirect:/lista?kategoria=" + product.getCategory();
+    }
+
+    public double sumPrices(List<Product> products) {
+        return products.stream()
+                .mapToDouble(Product::getPrice)
+                .sum();
     }
 }

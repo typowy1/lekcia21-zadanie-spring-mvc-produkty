@@ -15,7 +15,6 @@ public class Product {
         this.category = category;
     }
 
-
     public String getName() {
         return name;
     }
