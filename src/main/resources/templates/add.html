@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodawanie produktu</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/style.css"/>
+</head>
+<body>
+<div th:replace="fragments :: homePageLink"></div>
+<div class="addForm">
+
+    <form action="/dodaj" method="post" th:object="${product}">
+        <div class="form-group row">
+            <label for="staticName" class="col-sm-2 col-form-label">Nazwa produktu</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="staticName" placeholder="Nazwa" th:field="*{name}"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="staticPrice" class="col-sm-2 col-form-label">Cena produktu</label>
+            <div class="col-sm-10">
+                <input type="number" step="0.01" class="form-control" id="staticPrice" placeholder="Cena" th:field="*{price}"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="category" class="col-sm-2 col-form-label">Kategoria</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="category" th:field="*{category}">
+                    <option disabled selected value="">Wybierz..</option>
+                    <option value="GROCERIES">Art. spożywcze</option>
+                    <option value="HOUSEHOLD_ITEMS">Art. gospodarstwa domowego</option>
+                    <option value="OTHER">Inne</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="submit" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input type="submit" value="Dodaj" id="submit" class="btn btn-primary"/>
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>
