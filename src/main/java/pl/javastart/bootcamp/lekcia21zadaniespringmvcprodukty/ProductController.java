@@ -53,7 +53,7 @@ public class ProductController {
         return "redirect:/lista?kategoria=" + product.getCategory();
     }
 
-    public double sumPrices(List<Product> products) {
+    private double sumPrices(List<Product> products) {
         return products.stream()
                 .mapToDouble(Product::getPrice)
                 .sum();
